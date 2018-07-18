@@ -134,11 +134,7 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import Icon from 'vue-awesome/components/Icon'
 import api from '@/services/api'
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import farHeart from '@fortawesome/fontawesome-free-solid/faHeart'
-import farDownload from '@fortawesome/fontawesome-free-solid/faDownload'
 export default {
 	data(){
 		return {
@@ -256,10 +252,8 @@ export default {
 		}
 	},
 	components:{
-		Icon,
 		'nav-bar':Navbar,
-		foot:Footer,
-		FontAwesomeIcon
+		foot:Footer
 	},
 	async mounted(){
 		/*try {
