@@ -124,22 +124,12 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new HtmlWebpackPlugin({
-      title: 'PRODUCTION prerender-spa-plugin',
-      template: 'index.html',
-      filename: path.resolve(__dirname, './dist/index.html'),
-      favicon: 'favicon.ico'
-    }),
     new PrerenderSPAPlugin({
       staticDir: path.join(__dirname, 'dist'),
       routes: [ '/' ],
 
       renderer: new Renderer({
-        inject: {
-          foo: 'bar'
-        },
-        headless: false,
-        renderAfterDocumentEvent: 'render-event'
+        headless: false
       })
     })
   ])
