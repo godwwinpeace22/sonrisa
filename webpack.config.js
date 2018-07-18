@@ -123,14 +123,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    }),
-    new PrerenderSPAPlugin({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: [ '/' ],
-
-      renderer: new Renderer({
-        headless: false
-      })
     })
   ])
 }
