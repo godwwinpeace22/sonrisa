@@ -195,7 +195,7 @@ export default {
 					this.errorText = 'Passwords do not match'
 				}
 				else{
-					this.errorText = 'No internet connection'
+					this.errorText = 'Sorry, something went wrong'
 				}
 			}
 			

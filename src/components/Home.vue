@@ -8,13 +8,13 @@
 		<b-row>
 			<b-col cols='12' offset-sm='1' class="images_section">
 
-				<b-row>
+				<!--b-row>
 					
 					<b-col class='boxes' sm='3' mx-15 >
 						<img id="funnyimg1"  src="@/assets/funny-science.jpg" @click='triggerModal($event)'>
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img1" class="" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -23,7 +23,7 @@
 						<img id="funnyimg2" @click='triggerModal($event)' src="@/assets/That’s-the-reason-I’m-single….jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img2" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -32,7 +32,7 @@
 						<img id="funnyimg3" @click='triggerModal($event)' src="@/assets/the-best-funny-pictures-of-morning-cats.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img3" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 						<img id="funnyimg4" @click='triggerModal($event)' src="@/assets/Toddler_meme.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit" ><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit" ><v-icon name='heart' id="img4" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 						<img id="funnyimg5" @click='triggerModal($event)' src="@/assets/watermelon.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img5" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 						<img id="funnyimg6" @click='triggerModal($event)' src="@/assets/dogface.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img6" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 						<img id="funnyimg7" @click='triggerModal($event)' src="@/assets/takingcatout.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img7" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -77,12 +77,12 @@
 						<img id="funnyimg8" @click='triggerModal($event)' src="@/assets/trynottofart.jpg">
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"><v-icon name='heart' id="img8" v-b-tooltip.hover title="Like this meme"></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
 					</b-col>
-				</b-row>
+				</b-row-->
 				<b-row>
 					<b-col id="myModalBox" class="modalbox">
 						<!-- The Close Button -->
@@ -106,10 +106,10 @@
 				<!-- programmatically add more memes -->
 				<b-row>
 					<b-col class='boxes' sm='3' mx-15 v-for='image in images' :key='image._id'>
-						<img id="funnyimg1"  :src="getPics(image.src)" @click='triggerModal($event)'>
+						<img id="funnyimg1"  :src="image.src" @click='triggerModal($event)'>
 						<div class="overlay" >
 							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' v-b-tooltip.hover title="Like this meme"></v-icon></span>
+								<span @click="loveit"  ><v-icon name='heart' :id='image._id' :class="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'notliked' : 'liked' : 'notliked' " v-b-tooltip.hover :title="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'Like this meme' : 'You have liked this' : 'Like this meme' "></v-icon></span>
 								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
 							</div>
 						</div>
@@ -144,26 +144,6 @@ export default {
 		}
 	},
 	methods:{
-		getRef(id){
-			return id
-		},
-		getPics(src){
-			return src
-		},
-		setRef(id){
-			return id
-		},
-		setId(id){
-			return id
-		},
-		myModal (id) {
-			//console.log(id)
-			return id
-		},
-		hideModal (id) {
-			//console.log(this.$refs[id][0])
-			this.$refs[id][0].hide()
-		},
 		like(id){
 			let elem = document.getElementById(id);
 			//console.log(elem.style)
@@ -171,15 +151,62 @@ export default {
 			elem.style.color = this.liked ? 'red' : '#fff'
 			
 		},
-		loveit(event){
-			//console.log(event.target)
-			let heartIcon = event.target
-			//change the icon color color 
-			heartIcon.style.color == 'red' ? heartIcon.style.color = 'white' : heartIcon.style.color = 'red';
+		async loveit(event){
+			try{
+				// allow only users that are logged in to like a meme
+				if(this.$store.state.loggedin){
+					let heartIcon = event.currentTarget.children[0] 
+					//toggle the icon color based on the original state and current user action
+					switch(heartIcon.style.color){
+						case 'red': 
+							heartIcon.style.color = 'white'
+							heartIcon.attributes[8].value = 'Like this meme'
+							let likeRes = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/unlike`,{})
+							console.log(likeRes.data.done)
+							this.$store.dispatch('setUser', likeRes.data.user)
+							break
+
+						case 'white':
+							heartIcon.style.color = 'red'
+							heartIcon.attributes[8].value = 'You have liked this'
+							//console.log('now red')
+							let likeRes2 = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/like`,{})
+							console.log(likeRes2.data.done)
+							this.$store.dispatch('setUser', likeRes2.data.user)
+							break
+						default :
+							heartIcon.style.color = 'red'
+							heartIcon.attributes[8].value = 'You have liked this'
+							//console.log('now red')
+							let likeRes3 = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/like`,{})
+							console.log(likeRes3.data.done)
+							this.$store.dispatch('setUser', likeRes3.data.user)
+					}
+				}// end If
+				else{
+					let confirm = window.confirm(`Sorry, you have to be loggedin to like a meme. Login now ?`)
+					if(confirm){
+						// trigger login modal
+						let modal = document.getElementById('login_modal');
+						modal.style.display = "block";
+						//Get the <span> element that closes the modal
+						let span = document.getElementsByClassName("login_modal_close")[0];
+						
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function() { 
+							modal.style.display = "none";
+						}
+					}
+					else{}
+				}
+			}
+			catch(err){
+				console.log(err)
+			}	
 		},
 		shareit(event){
 			//console.log(event.srcElement)
-			let shareIcon = event.target
+			let shareIcon = event.currentTarget.children[0]
 			//change the icon color color 
 			shareIcon.style.color == 'red' ? shareIcon.style.color = 'white' : shareIcon.style.color = 'red';
 		},
@@ -256,14 +283,14 @@ export default {
 		foot:Footer
 	},
 	async mounted(){
-		/*try {
+		try {
 			let result = await api().get('images/0')
 			console.log(result)
 			this.images = result.data
 			console.log(result.data)
 		} catch (error) {
 			console.log(error)
-		}*/
+		}
 	}
 }
 </script>
@@ -454,6 +481,13 @@ export default {
 		float:none;
 		position: relative;
 		top:10%;
+	}
+	.notliked{
+		color:white;
+
+	}
+	.liked{
+		color:red;
 	}
 	.modal-share .icon-share-2{
 		margin-top:60%;
