@@ -216,7 +216,7 @@ export default {
 		-ms-border-radius:$t $l $b $r;
 	}
 	nav{
-		width:100%;
+		//width:100%;
 		height: 45px;
 		line-height:42px;
 		background-color:#343d46;

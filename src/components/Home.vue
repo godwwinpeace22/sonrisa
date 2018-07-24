@@ -1,112 +1,17 @@
 <template>
 <div>
 	<nav-bar></nav-bar>
-	<b-container fluid='fluid'>
+	<b-container fluid>
 		<b-row class='home-banner' align-v='center'>
-			<b-col id='banner-inner' cols='8' offset-sm="2"></b-col>
+			<b-col id='banner-inner' sm='8' offset-sm="2"></b-col>
 		</b-row>
 		<b-row>
-			<b-col cols='12' offset-sm='1' class="images_section">
-
-				<!--b-row>
-					
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg1"  src="@/assets/funny-science.jpg" @click='triggerModal($event)'>
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img1" class="" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg2" @click='triggerModal($event)' src="@/assets/That’s-the-reason-I’m-single….jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img2" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg3" @click='triggerModal($event)' src="@/assets/the-best-funny-pictures-of-morning-cats.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img3" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg4" @click='triggerModal($event)' src="@/assets/Toddler_meme.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit" ><v-icon name='heart' id="img4" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg5" @click='triggerModal($event)' src="@/assets/watermelon.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img5" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg6" @click='triggerModal($event)' src="@/assets/dogface.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img6" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg7" @click='triggerModal($event)' src="@/assets/takingcatout.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img7" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-					<b-col class='boxes' sm='3' mx-15 >
-						<img id="funnyimg8" @click='triggerModal($event)' src="@/assets/trynottofart.jpg">
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"><v-icon name='heart' id="img8" v-b-tooltip.hover title="Like this meme"></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
-							</div>
-						</div>
-					</b-col>
-				</b-row-->
-				<b-row>
-					<b-col id="myModalBox" class="modalbox">
-						<!-- The Close Button -->
-						<span class="modal-close">&times;</span>
-
-						<!-- Modal Content (The Image) -->
-						<img class="modal-box-content" id="img01">
-						<a href="" id="imglink" download></a>
-						<div class="modal-share">
-							<v-icon name='download' id="modal-share-download"></v-icon>
-							<v-icon name='share-2' id="modal-share-share"></v-icon>
-
-							<b-tooltip target="modal-share-download" title="download"></b-tooltip>
-							<b-tooltip target="modal-share-share" title="Share on facebook"></b-tooltip>
-						</div>
-						<!-- Modal Caption (Image Text) -->
-						<div id="caption"></div>
-					</b-col>
-				</b-row>
+			<b-col cols='12'  class="images_section">
 
 				<!-- programmatically add more memes -->
 				<b-row>
-					<b-col class='boxes' sm='3' mx-15 v-for='image in images' :key='image._id'>
-						<img id="funnyimg1"  :src="image.src" @click='triggerModal($event)'>
+					<b-col class='boxes' cols="6" md='4' mx-15 v-for='image in $store.state.images' :key='image._id'>
+						<img :id="image._id"  :src="image.src" @click='triggerModal($event)'>
 						<div class="overlay" >
 							<div class="meta" >
 								<span @click="loveit"  ><v-icon name='heart' :id='image._id' :class="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'notliked' : 'liked' : 'notliked' " v-b-tooltip.hover :title="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'Like this meme' : 'You have liked this' : 'Like this meme' "></v-icon></span>
@@ -125,6 +30,37 @@
 			</b-col>
 			<!--b-col sm='3' class='sidebar_section'></b-col-->
 		</b-row>
+
+		<!-- modal for images -->
+		<b-row>
+			<b-col id="myModalBox" class="modalbox" >
+				<span class="modal-close">&times;</span>
+				<b-carousel id="carousel1" class="modal-box-content2" 
+									style="text-shadow: 1px 1px 2px #333;"
+									controls
+									indicators
+									background="#ababab"
+									:interval="4000"
+									img-width="1024"
+									
+									v-model="slide"
+									@sliding-start="onSlideStart"
+									@sliding-end="onSlideEnd"
+				>
+
+				<!-- Slides -->
+				<b-carousel-slide  :img-src="image.src" v-for='image in $store.state.images' :key='image._id' :id="image._id" class="slide">
+				</b-carousel-slide>
+
+			</b-carousel>
+
+			<p class="mt-4">
+				{{ `${slide} / ${$store.state.images.length}`}}<br>
+			</p>
+			</b-col>
+
+  	</b-row>
+
 	</b-container>
 	<foot></foot>
 </div>
@@ -140,10 +76,18 @@ export default {
 		return {
 			images:[],
 			index:8,
-			liked:false
+			liked:false,
+			slide:0,
+			sliding:null
 		}
 	},
 	methods:{
+		onSlideStart (slide) {
+      this.sliding = true
+    },
+    onSlideEnd (slide) {
+      this.sliding = false
+    },
 		like(id){
 			let elem = document.getElementById(id);
 			//console.log(elem.style)
@@ -171,7 +115,7 @@ export default {
 							heartIcon.attributes[8].value = 'You have liked this'
 							//console.log('now red')
 							let likeRes2 = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/like`,{})
-							console.log(likeRes2.data.done)
+							//console.log(likeRes2.data.done)
 							this.$store.dispatch('setUser', likeRes2.data.user)
 							break
 						default :
@@ -179,7 +123,7 @@ export default {
 							heartIcon.attributes[8].value = 'You have liked this'
 							//console.log('now red')
 							let likeRes3 = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/like`,{})
-							console.log(likeRes3.data.done)
+							//console.log(likeRes3.data.done)
 							this.$store.dispatch('setUser', likeRes3.data.user)
 					}
 				}// end If
@@ -211,25 +155,25 @@ export default {
 			shareIcon.style.color == 'red' ? shareIcon.style.color = 'white' : shareIcon.style.color = 'red';
 		},
 		triggerModal(event){
-			//console.log(event.target.id)
-			// Get the modal
 			var modal = document.getElementById('myModalBox');
-			var img = document.getElementById(event.target.id);
-			var modalImg = document.getElementById("img01");
-			var imgdwld = document.getElementById("imglink");
+			let span = document.getElementsByClassName("modal-close")[0];
+			let imgIdsArr = []
 
+			this.$store.state.images.map(
+				(image,index) =>
+				imgIdsArr.push(image._id)
+			)
+			let currSlide = imgIdsArr.indexOf(event.currentTarget.id)
+			console.log(currSlide)
+			this.slide = currSlide
+			
 			modal.style.display = "block";
-			modalImg.src = event.target.src;
-			modalImg.style.height = '80%'
-			// Get the <span> element that closes the modal
-			var span = document.getElementsByClassName("modal-close")[0];
-			
-			
+	
 			//when the user clicks the download button
-			document.getElementById('modal-share-download').onclick = function(){
+			/*document.getElementById('modal-share-download').onclick = function(){
 				imgdwld.href = event.target.src
 				imgdwld.click()
-			}
+			}*/
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() { 
 				modal.style.display = "none";
@@ -268,8 +212,9 @@ export default {
 		},
 		async loadMore(){
 			try {
-				let nextSet = await api().get(`images/${this.images.length}`);
+				let nextSet = await api().get(`images/${this.$store.state.images.length}`);
 				this.images = this.images.concat(nextSet.data)
+				this.$store.dispatch('loadMoreImages', nextSet.data)
 				//console.log(nextSet.data)
 				//console.log(this.images.length)
 			} catch (error) {
@@ -285,9 +230,10 @@ export default {
 	async mounted(){
 		try {
 			let result = await api().get('images/0')
-			console.log(result)
+			//console.log(result)
 			this.images = result.data
-			console.log(result.data)
+			this.$store.dispatch('setImages', result.data)
+			//console.log(result.data)
 		} catch (error) {
 			console.log(error)
 		}
@@ -316,18 +262,14 @@ export default {
 		height: 100px;
 	}
 	.images_section{
-		background:peachpuf;
+		background:#fff;
 		margin-top:3%;
-		margin-left:10px;
 		width:100%;
 	}
 	.boxes{
-		//border:1px solid #eee;
-		background-size:cover;
-		background-repeat:no-repeat;
 		@include borderRadius(2px,2px,2px,2px);
-		padding-left:5px;
-		padding-right:5px;
+		padding-left:8px;
+		padding-right:8px;
 		margin-bottom:10px;
 		height:200px;
 		&:hover{
@@ -377,29 +319,30 @@ export default {
 		}
 		
 	}
-
 	.modalbox {
-			display: none; /* Hidden by default */
-			position: fixed; /* Stay in place */
-			z-index: 100; /* Sit on top */
-			//padding-top: 100px; /* Location of the box */
+			display: none;
+			position: fixed;
+			z-index: 100;
 			left: 0;
 			top: 0;
-			width: 100%; /* Full width */
-			height: 100%; /* Full height */
-			//overflow: auto; /* Enable scroll if needed */
-			background-color: rgb(0,0,0); /* Fallback color */
-			background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+			width: 100%;
+			height: 100%;
+			background-color: rgb(0,0,0);
 		}
-
-		/* Modal Content (Image) */
-		.modal-box-content {
+		.w-100{
+			height:400px;
+		}
+		.carousel-indicators li{
+			background-color: #FF9800;
+		}
+		
+		.modal-box-content2 {
 			margin: auto !important;
 			display: block;
 			width: 60%;
 			position: relative;
 			top:15%;
-			max-width: 700px;
+			max-width: 900px;
 		}
 
 		/* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -429,6 +372,13 @@ export default {
 				to {transform:scale(1)}
 		}
 
+		/* top slide indicator */
+		.mt-4{
+			position:absolute;
+			top:15px;
+			left:45px;
+			color:#fff;
+		}
 		/* The Close Button */
 		.modal-close {
 				position: absolute;

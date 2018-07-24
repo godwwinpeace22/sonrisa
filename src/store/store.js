@@ -8,7 +8,8 @@ export default new Vuex.Store({
     plugins:[creatPersistedState()],
     state:{
         user:null,
-        loggedin:false
+        loggedin:false,
+        images:[]
     },
     mutations:{
         setUser(state,user){
@@ -18,6 +19,12 @@ export default new Vuex.Store({
         logout(state,data){
             state.user = null
             state.loggedin = false
+        },
+        setImages(state,images){
+            state.images = images
+        },
+        loadMoreImages(state,images){
+            state.images = state.images.concat(images)
         }
     },
     actions:{
@@ -26,6 +33,12 @@ export default new Vuex.Store({
         },
         logout({commit}, data){
             commit('logout', data)
+        },
+        setImages({commit}, images){
+            commit('setImages', images)
+        },
+        loadMoreImages({commit}, images){
+            commit('loadMoreImages', images)
         }
     }
 })
