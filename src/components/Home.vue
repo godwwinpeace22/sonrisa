@@ -6,11 +6,11 @@
 			<b-col id='banner-inner' sm='8' offset-sm="2"></b-col>
 		</b-row>
 		<b-row>
-			<b-col cols='12'  class="images_section">
+			<b-col sm='12'  class="images_section">
 
 				<!-- programmatically add more memes -->
 				<b-row>
-					<b-col class='boxes' cols="6" md='4' mx-15 v-for='image in $store.state.images' :key='image._id'>
+					<b-col class='boxes' cols='12' sm="6" md="4" xl="3" offset-sm="0" v-for='image in $store.state.images' :key='image._id'>
 						<img :id="image._id"  :src="image.src" @click='triggerModal($event)'>
 						<div class="overlay" >
 							<div class="meta" >
@@ -41,7 +41,7 @@
 									indicators
 									background="#ababab"
 									:interval="4000"
-									img-width="1024"
+									img-width="100%"
 									
 									v-model="slide"
 									@sliding-start="onSlideStart"
@@ -234,6 +234,7 @@ export default {
 			this.images = result.data
 			this.$store.dispatch('setImages', result.data)
 			//console.log(result.data)
+			console.log(this.$store.state.user)
 		} catch (error) {
 			console.log(error)
 		}

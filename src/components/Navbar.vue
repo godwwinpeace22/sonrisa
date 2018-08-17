@@ -1,29 +1,40 @@
 <template>
 	<div>
-		<nav class="header">
-			<a href="/#/" title="Sonrisa" id="brand"> Sonrisa</a>
-			<div class="left">
-				<b-button href="#" size="sm" variant="primary" id="upload" v-b-modal.modal-center>Upload an image</b-button>
-				
-				<a href="/#/about" id="about">About</a>
-				<a href="#" v-if="!$store.state.loggedin" id="login" @click="triggerModal">Login</a>
-				<!--router-link :to="'/register'" v-if="!$store.state.loggedin">Register</router-link-->
-				
-				<router-link to="#" v-if="$store.state.loggedin" id="username">{{$store.state.user.username}}</router-link>
-				<a v-if="$store.state.loggedin" href="#" @click='logout'>Logout</a>
-			</div>
-		</nav>
+		<b-row>
+			<b-col cols="12">
+				<nav class="header">
+					<a href="/#/" title="Sonrisa" id="brand"> Sonrisa</a>
+					<div class="left">
+						<b-button href="#" size="sm" variant="primary" id="upload" v-b-modal.modal-center>Upload an image</b-button>
+						
+						<a href="/#/about" id="about">About</a>
+						<a href="#" v-if="!$store.state.loggedin" id="login" @click="triggerModal">Login</a>
+						<!--router-link :to="'/register'" v-if="!$store.state.loggedin">Register</router-link-->
+						
+						<router-link to="#" v-if="$store.state.loggedin" id="username">{{$store.state.user.username}}</router-link>
+						<a v-if="$store.state.loggedin" href="#" @click='logout'>Logout</a>
+					</div>
+				</nav>
+			</b-col>
+		</b-row>
 
 		<!--upload form -->
-		<b-modal id="modal-center" ref="modalcenter" centered title="Upload your own funny meme" header-bg-variant="light" footer-bg-variant="dark">
-			<h6 style="font-size:12px;">Drag and drop enabled</h6>
-			<b-form-file v-model="file" ref="fileinput" :state="Boolean(file)" accept="image/*" placeholder="Choose a file..."></b-form-file>
-  		<div class="mt-3">Selected file: {{file && file.name}}</div>
-			<div slot='modal-footer'>
-				<b-button variant="primary" size="sm" @click="uploadFile">{{uploadProgress ? 'Uploading...' : 'Upload'}}</b-button>
-								<span v-show="uploadProgress" id="loading_spinner" style="position:absolute;top:80%;display:block;left:45%;"><img src="@/assets/loading_spinner.svg" style="width:20%" alt="spinner"></span>
-			</div>
-		</b-modal>
+		<b-container fluid>
+			<b-col>
+				<b-row>
+					<b-modal id="modal-center" ref="modalcenter" centered title="Upload your own funny meme" header-bg-variant="light" footer-bg-variant="dark">
+					<h6 style="font-size:12px;">Drag and drop enabled</h6>
+					<b-form-file v-model="file" ref="fileinput" :state="Boolean(file)" accept="image/*" placeholder="Choose a file..."></b-form-file>
+					<div class="mt-3">Selected file: {{file && file.name}}</div>
+					<div slot='modal-footer'>
+						<b-button variant="primary" size="sm" @click="uploadFile">{{uploadProgress ? 'Uploading...' : 'Upload'}}</b-button>
+						<span v-show="uploadProgress" id="loading_spinner" style="position:absolute;top:80%;display:block;left:45%;"><img src="@/assets/loading_spinner.svg" style="width:20%" alt="spinner"></span>
+					</div>
+				</b-modal>
+				</b-row>
+			</b-col>
+		</b-container>
+		
 
 		<!-- toast -->
 		<b-col sm="6" offset-sm="3" style="position:absolute;top:5%;right:20px">
@@ -33,9 +44,9 @@
 		</b-col>
 		
 
-		<b-container>
+		<b-container fluid>
 			<b-row>
-				<b-col id="login_modal" class="login_modal" >
+				<b-col cols="12" md="12" id="login_modal" class="login_modal" >
 					
 					
 					<!-- Modal Content -->
@@ -279,7 +290,7 @@ export default {
 			display: block;
 			padding:15px;
 			padding-top:0px;
-			width: 30%;
+			//width: 30%;
 			//height: 65%;
 			position: relative;
 			top:15%;
