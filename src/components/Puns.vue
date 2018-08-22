@@ -166,6 +166,7 @@ export default {
       }
     p{
       color:#f5ecec;
+      margin:auto;
     }
   }
 

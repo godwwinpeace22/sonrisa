@@ -3,12 +3,17 @@
     <nav-bar></nav-bar>
     <b-container fluid>
       <b-row>
-        <b-col class="banner"></b-col>
+        <b-col class="banner">
+          <div id="banner-r-inner">
+            <h1>Riddles</h1>
+            <p>A collection of funny and head-scratching puzzlers</p>
+          </div>
+        </b-col>
       </b-row>
       <b-row>
         <b-col class="more_main" sm="8" offset-sm='2'>
           <b-row>
-            <b-col cols="12" sm="12" >
+            <b-col cols="12" sm="12" d-flex >
               <b-card class="box" sm='12'>
                 <h1 class="title">{{riddle.title}}</h1>
                 <p class="quest">{{riddle.question}}</p>
@@ -108,12 +113,30 @@ export default {
 <style lang="scss" scoped>
   .banner{
     background-color:steelblue;
-    height:200px;
-    //background-image:url(../assets/riddles_banner.jpg);
-    //background-image: url(../assets/riddles_banner.png);
-    background-size:100% 100%;
-    background-position:center;
-    background-repeat:no-repeat;
+    height:20%;
+    padding:5%;
+    text-align: center;
+    color:#fff;
+    position: relative;
+    background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    -webkit-background-size: 3px 3px;
+    -moz-background-size: 3px 3px;
+    background-size: 3px 3px;
+
+    #banner-r-inner{
+      //background:hotpink;
+      position:relative;
+      top:30%;
+      width:fit-content;
+      margin:auto;
+    }
+    h1{
+      font-weight: bolder;
+    }
+    
   }
   
   .more_main{
@@ -128,6 +151,7 @@ export default {
     line-height: 1.5;
     color:#444;
     font-family: Noto Serif,Georgia,serif;
+    margin:auto;
     }
   }
 </style>

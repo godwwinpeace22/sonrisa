@@ -13,7 +13,7 @@
       <b-row>
         <b-col class="rdls_main" sm="10" offset-sm='1'>
           <b-row>
-            <b-col cols="12" sm="6" md="4" lg="4" v-for="riddle in riddles" :key="riddle._id">
+            <b-col cols="12" sm="6" md="4" lg="4" v-for="riddle in riddles" :key="riddle._id" d-flex>
               <a :href="spinaltap(riddle.title)"><b-card class="box" sm='6' md='4'>
                 <h4>{{riddle.title}}</h4>
                 <p style="text-overflow:clipped;">{{riddle.question ? shorten(riddle.question) : ''}}.
@@ -111,6 +111,7 @@ export default {
       }
     p{
       color:#f5ecec;
+      margin:auto;
     }
   }
 </style>
