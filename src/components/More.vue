@@ -146,6 +146,9 @@ export default {
     .show_ans{
       transition: all .5 ease-in;
     }
+    .card-body{
+      display:flex;
+    }
     p{
     font-size: 1.75em;
     line-height: 1.5;

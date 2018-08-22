@@ -108,7 +108,10 @@ export default {
     h4{
       text-align: center;
       color:#fff;
-      }
+    }
+    .card-body{
+      display:flex;
+    }
     p{
       color:#f5ecec;
       margin:auto;
