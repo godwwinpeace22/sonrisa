@@ -13,11 +13,10 @@
       <b-row>
         <b-col class="puns_main" sm="10" offset-sm='1'>
           <b-row>
-            <b-col cols="12" sm="6" md="4" lg="4" v-for="pun in 6" :key="pun._id" >
+            <b-col cols="12" sm="6" md="4" lg="4" v-for="pun in puns" :key="pun._id" >
               <b-card class="box" sm='6' md='4' :id="pun._id" @click='triggerModal($event)'>
                 <p style="text-overflow:clipped;">
                   {{pun.content}}.
-                  lorem ipusm dolor sit amet consectuture uuy and by sonri caps do ye good if me lorem ipusm dolor sit amet consectuture uuy and by sonri caps do ye good if me
                   </p>
               </b-card>
             </b-col>

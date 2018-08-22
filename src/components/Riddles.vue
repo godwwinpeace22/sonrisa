@@ -17,7 +17,6 @@
               <a href="spinaltap(riddle.title)"><b-card class="box" sm='6' md='4'>
                 <h4>{{riddle.title}}Title</h4>
                 <p style="text-overflow:clipped;">{{riddle.question ? shorten(riddle.question) : ''}}.
-                  lorem ipusm dolor sit amet consectuture uuy and by sonri caps do ye good if me lorem ipusm dolor sit amet consectuture uuy and by sonri caps do ye good if me
                 </p>
                 
                 <hr>
