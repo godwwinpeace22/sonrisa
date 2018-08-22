@@ -1,12 +1,18 @@
 <template>
-	<div>
+	<div style="background-color: #343d46;" id="top">
 		<b-row>
 			<b-col cols="12">
 				<nav class="header">
 					<a href="/#/" title="Sonrisa" id="brand"> Sonrisa</a>
-					<div class="left">
+
+					<div class="left upload">
 						<b-button href="#" size="sm" variant="primary" id="upload" v-b-modal.modal-center>Upload an image</b-button>
+					</div>
+
+					<div class="left">
 						
+						<a href="/#/pun" id="">PUNs</a>
+						<a href="/#/riddles" id="">Riddles</a>
 						<a href="/#/about" id="about">About</a>
 						<a href="#" v-if="!$store.state.loggedin" id="login" @click="triggerModal">Login</a>
 						<!--router-link :to="'/register'" v-if="!$store.state.loggedin">Register</router-link-->
@@ -14,6 +20,7 @@
 						<router-link to="#" v-if="$store.state.loggedin" id="username">{{$store.state.user.username}}</router-link>
 						<a v-if="$store.state.loggedin" href="#" @click='logout'>Logout</a>
 					</div>
+					
 				</nav>
 			</b-col>
 		</b-row>
@@ -226,11 +233,20 @@ export default {
 		-o-border-radius:$t $l $b $r;
 		-ms-border-radius:$t $l $b $r;
 	}
+	#top{
+		background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+    -webkit-background-size: 3px 3px;
+    -moz-background-size: 3px 3px;
+    background-size: 3px 3px;
+		background-color:#343d46;
+	}
 	nav{
 		//width:100%;
 		height: 45px;
 		line-height:42px;
-		background-color:#343d46;
 		overflow: aut;
 		a{
 			color:#eff1f5;
@@ -241,6 +257,8 @@ export default {
 			float:left;
 			padding-left:15px;
 			text-transform:uppercase;
+			font-weight: bold;
+			width: fit-content;
 			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		}
 		.left{
@@ -248,7 +266,12 @@ export default {
 			padding-left:15px;
 			padding-right:15px;
 			a{
-				font-size: 12px;
+				font-size: 14px;
+				margin-left:5px;
+				margin-right:5px;
+				&:hover{
+					color:#FFC107;
+				}
 			}
 			
 			#about::after{
@@ -353,5 +376,21 @@ export default {
 			color: #f3f7f3;
 			background-color: #3eb73e;
 			border-color: #3eb73e;
+		}
+		@media (max-width: 512px){
+			nav{
+				height:fit-content;
+				#brand{
+					display:block;
+					margin:auto;
+					float:none;
+				}
+				.left{
+					width:fit-content;
+					margin:auto;
+					display:block;
+					float:none;
+				}
+			}
 		}
 </style>

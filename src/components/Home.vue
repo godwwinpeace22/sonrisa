@@ -6,18 +6,21 @@
 			<b-col id='banner-inner' sm='8' offset-sm="2"></b-col>
 		</b-row>
 		<b-row>
-			<b-col sm='12'  class="images_section">
+			<b-col sm='10' offset-sm='1'  class="images_section">
 
 				<!-- programmatically add more memes -->
 				<b-row>
-					<b-col class='boxes' cols='12' sm="6" md="4" xl="3" offset-sm="0" v-for='image in $store.state.images' :key='image._id'>
-						<img :id="image._id"  :src="image.src" @click='triggerModal($event)'>
-						<div class="overlay" >
-							<div class="meta" >
-								<span @click="loveit"  ><v-icon name='heart' :id='image._id' :class="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'notliked' : 'liked' : 'notliked' " v-b-tooltip.hover :title="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'Like this meme' : 'You have liked this' : 'Like this meme' "></v-icon></span>
-								<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
+					<b-col  cols='12' sm="6" md="4" xl="4" offset-sm="0" v-for='image in $store.state.images' :key='image._id'>
+						<div class='boxes' sm='6' md='4' style="padding:0;">
+							<img :id="image._id"  :src="image.src" @click='triggerModal($event)'>
+							<div class="overlay" >
+								<div class="meta" >
+									<span @click="loveit"  ><v-icon name='heart' :id='image._id' :class="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'notliked' : 'liked' : 'notliked' " v-b-tooltip.hover :title="$store.state.loggedin ? $store.state.user.likes.indexOf(image._id) == -1 ? 'Like this meme' : 'You have liked this' : 'Like this meme' "></v-icon></span>
+									<span @click="shareit"><v-icon name='share-2' v-b-tooltip.hover title="Share this meme"></v-icon></span>
+								</div>
 							</div>
 						</div>
+						
 					</b-col>
 				</b-row>
 
@@ -106,7 +109,7 @@ export default {
 							heartIcon.style.color = 'white'
 							heartIcon.attributes[8].value = 'Like this meme'
 							let likeRes = await api().post(`images/like/${this.$store.state.user._id}/${heartIcon.id}/unlike`,{})
-							console.log(likeRes.data.done)
+							//console.log(likeRes.data.done)
 							this.$store.dispatch('setUser', likeRes.data.user)
 							break
 
@@ -145,7 +148,8 @@ export default {
 				}
 			}
 			catch(err){
-				console.log(err)
+				//console.log(err)
+				alert('sorry, something went wrong')
 			}	
 		},
 		shareit(event){
@@ -164,7 +168,7 @@ export default {
 				imgIdsArr.push(image._id)
 			)
 			let currSlide = imgIdsArr.indexOf(event.currentTarget.id)
-			console.log(currSlide)
+			//console.log(currSlide)
 			this.slide = currSlide
 			
 			modal.style.display = "block";
@@ -234,9 +238,10 @@ export default {
 			this.images = result.data
 			this.$store.dispatch('setImages', result.data)
 			//console.log(result.data)
-			console.log(this.$store.state.user)
+			//console.log(this.$store.state.user)
 		} catch (error) {
-			console.log(error)
+			//console.log(error)
+			//alert('something went wrong, please reload this page')
 		}
 	}
 }
@@ -254,7 +259,7 @@ export default {
 		background-color:#dddddd;
 		background-image: url(../assets/banana.jpg);
 		background-position: center;
-		background-size:cover;
+		background-size:100% 100%;
 		background-repeat: no-repeat;
 		height:350px;
 	}
@@ -263,21 +268,22 @@ export default {
 		height: 100px;
 	}
 	.images_section{
-		background:#fff;
+		background:transparent;
 		margin-top:3%;
 		width:100%;
 	}
 	.boxes{
 		@include borderRadius(2px,2px,2px,2px);
-		padding-left:8px;
-		padding-right:8px;
-		margin-bottom:10px;
+		//padding-left:8px;
+		//padding-right:8px;
+		margin-bottom:30px;
 		height:200px;
+		position:relative;
 		&:hover{
 			//opacity: .5;
 			cursor: pointer;
 			-webkit-filter: drop-shadow(8px 8px 10px gray); /* Safari */
-    	filter: drop-shadow(8px 8px 10px gray);
+    	filter: drop-shadow(1px 2px 2px gray);
 		}
 		img{
 			width:100%;
@@ -295,7 +301,8 @@ export default {
 			right:0;
 			overflow: hidden;
 			background:#343d46;
-			width:100%;
+			width:104%;
+			margin-left:-6px;
 			transition:.5s ease;
 			@include borderRadius(0px, 0px, 5px, 5px);
 		}
@@ -444,4 +451,19 @@ export default {
 		margin-top:60%;
 	}
 	
+	@media (max-width: 840px){
+		.home-banner{
+			height:320px;
+		}
+	}
+	@media (max-width: 768px){
+		.home-banner{
+			height:300px;
+		}
+	}
+	@media (max-width: 576px){
+		.home-banner{
+			height:200px;
+		}
+	}
 </style>
