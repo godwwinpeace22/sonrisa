@@ -1,7 +1,7 @@
 <template>
     <div>
         <footer>
-            <span>Copyright &copy; 2018</span>
+            <span>Copyright &copy; 2018 Sonrisa</span>
         </footer>
     </div>
 </template>

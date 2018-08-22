@@ -86,7 +86,7 @@ export default {
 	},
 	methods:{
 		onSlideStart (slide) {
-      this.sliding = true
+      this.sliding = false
     },
     onSlideEnd (slide) {
       this.sliding = false
@@ -352,7 +352,11 @@ export default {
 			top:15%;
 			max-width: 900px;
 		}
-
+		@media screen and (max-width:650px){
+			.modal-box-content2{
+				width:100%;
+			}
+		}
 		/* Caption of Modal Image (Image Text) - Same Width as the Image */
 		.modal-share {
 				margin: auto;

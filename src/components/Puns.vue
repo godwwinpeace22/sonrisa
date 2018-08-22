@@ -241,8 +241,18 @@ export default {
           width: 100%;
       }
   }
+  @media only screen and (max-width: 650px){
+    .modal-box-content2{
+      width:100%;
+    }
+  }
   .slide{
     height:300px;
     background-color:steelblue;
+    display:flex;
+    justify-content: center;
+  }
+  .carousel-caption{
+    width:75%;
   }
 </style>

@@ -77,8 +77,9 @@ export default {
       let loc = location.href.split('/')
       let cur_riddle = loc[loc.length -1];
       let new_riddle = this.riddles[this.index + 1].title
-      new_riddle = new_riddle.split(' ').join('-');
+      new_riddle = new_riddle.split(' ').join('-')
       this.index += 1
+      this.show_ans = false
       this.riddle = this.riddles[this.index]
       window.location.href = `/#/riddles/${new_riddle}`;
     },
@@ -145,9 +146,6 @@ export default {
   .box{
     .show_ans{
       transition: all .5 ease-in;
-    }
-    .card-body{
-      display:flex;
     }
     p{
     font-size: 1.75em;

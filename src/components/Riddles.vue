@@ -14,14 +14,18 @@
         <b-col class="rdls_main" sm="10" offset-sm='1'>
           <b-row>
             <b-col cols="12" sm="6" md="4" lg="4" v-for="riddle in riddles" :key="riddle._id" d-flex>
-              <a :href="spinaltap(riddle.title)"><b-card class="box" sm='6' md='4'>
-                <h4>{{riddle.title}}</h4>
-                <p style="text-overflow:clipped;">{{riddle.question ? shorten(riddle.question) : ''}}.
-                </p>
-                
-                <hr>
-                <p>Read more</p>
-              </b-card></a>
+              <b-card class="box" sm='6' md='4'>
+                <a :href="spinaltap(riddle.title)">
+                  <h4>{{riddle.title}}</h4>
+                  <p style="text-overflow:clipped;">{{riddle.question ? shorten(riddle.question) : ''}}.
+                  </p>
+                  <div style="position:absolute;bottom:15px;">
+                    <hr>
+                    <p>Read more</p>
+                  </div>
+                  
+                </a>
+              </b-card>
             </b-col>
           </b-row>
         </b-col>
@@ -101,16 +105,13 @@ export default {
   }
   .box{
     background-color:#607D8B;
-    height:200px;
+    height:250px;
     margin-bottom:15px;
     margin-top:15px;
     &:hover{cursor:pointer;}
     h4{
       text-align: center;
       color:#fff;
-    }
-    .card-body{
-      display:flex;
     }
     p{
       color:#f5ecec;

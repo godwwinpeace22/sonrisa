@@ -252,6 +252,7 @@ export default {
 			color:#eff1f5;
 			font-size: 18px;
 			text-decoration:none;
+			font-weight: bold;
 		}
 		#brand{
 			float:left;
