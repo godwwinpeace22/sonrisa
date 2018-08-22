@@ -108,6 +108,7 @@ export default {
     try {
       let res = await api().get('puns')
       this.puns = res.data
+      console.log(location.pathname)
     } catch (error) {
       console.log(error)
     }

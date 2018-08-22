@@ -73,25 +73,33 @@ export default {
       this.riddle = this.riddles[this.index]
     },
     next(){
+      if(this.index + 1 < this.riddles.length){
+        let loc = location.href.split('/')
+        let cur_riddle = loc[loc.length -1];
+        let new_riddle = this.riddles[this.index + 1].title
+        new_riddle = new_riddle.split(' ').join('-')
+        this.index += 1
+        this.show_ans = false
+        this.riddle = this.riddles[this.index]
+        window.location.href = `/#/riddles/${new_riddle}`;
+      }
+      else{
+        alert('this is the last one')
+      }
       
-      let loc = location.href.split('/')
-      let cur_riddle = loc[loc.length -1];
-      let new_riddle = this.riddles[this.index + 1].title
-      new_riddle = new_riddle.split(' ').join('-')
-      this.index += 1
-      this.show_ans = false
-      this.riddle = this.riddles[this.index]
-      window.location.href = `/#/riddles/${new_riddle}`;
     },
     prev(){
+      if(this.index > 1){
+        let loc = location.href.split('/')
+        let cur_riddle = loc[loc.length -1];
+        let new_riddle = this.riddles[this.index - 1].title
+        new_riddle = new_riddle.split(' ').join('-');
+        this.index -= 1
+        this.riddle = this.riddles[this.index]
+        window.location.href = `/#/riddles/${new_riddle}`;
+      }
+      else{}
       
-      let loc = location.href.split('/')
-      let cur_riddle = loc[loc.length -1];
-      let new_riddle = this.riddles[this.index - 1].title
-      new_riddle = new_riddle.split(' ').join('-');
-      this.index -= 1
-      this.riddle = this.riddles[this.index]
-      window.location.href = `/#/riddles/${new_riddle}`;
     }
   },
   async mounted(){

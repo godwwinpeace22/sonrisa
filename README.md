@@ -1,6 +1,6 @@
-# sonrisa
+# Sonrisa
 
-> watch and download funny images, share and like for free
+> watch and download funny images,riddles and pun. Share and like for free
 ##### go to https://sonrisa.netlify.com
 
 ## Build Setup
